@@ -32,6 +32,7 @@ for record in all_data:
     sql = f"insert into python_data_import values ('{record.date}','{record.order_id}','{record.money}','{record.province }')"
     cur.execute(sql) #执行SQL语句
 
+print("github succeed")
 #关闭链接
 cur.close()
 #开始进行数据计算
