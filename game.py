@@ -1,12 +1,11 @@
-class Dog:
-    @classmethod
-    def eat(cls):
-        print("Eating")
-
-
-    @staticmethod
-    def drink():
-        print("Drinking")
-
-
-Dog.drink()
+def get_string(func):
+    def inner():
+        ss = func()
+        news = ss + ".txt"
+        return news
+    return inner
+@get_string
+def hello():
+    return "Hello World!"
+result = hello()
+print(result)

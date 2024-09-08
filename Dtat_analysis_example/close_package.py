@@ -31,19 +31,25 @@
 # fn2(10)
 
 #利用闭包实现ATM小案例
-def account_create(initial_account = 0):
-
-    def atm(num,deposite=True):
-        nonlocal initial_account
+def account_create(func):
+    def atm(*args, **kwargs):
+        result = func(*args, **kwargs)
+        initial_account = result[0]
+        num = result[1]
+        deposite = result[2]
         if deposite:
             initial_account += num
             print(f"存款：+{num},账户余额：{initial_account}")
         else:
             initial_account -= num
             print(f"存款：-{num},账户余额：{initial_account}")
+        return initial_account
     return atm
 
-atm = account_create()
-atm(100)
-atm(200)
-atm(100,deposite=False)
+@account_create
+def get_money(num, deposite=True):
+    money = 100
+    return money, num, deposite
+
+result = get_money(100, deposite=True)
+print(result)
