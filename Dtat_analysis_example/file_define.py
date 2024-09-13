@@ -1,5 +1,5 @@
 """文件相关类文件"""
-import json
+import  json
 
 #先定义一个抽象类用来做顶层设计 确定有哪些功能需要实现
 from data_define import *
